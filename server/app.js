@@ -168,6 +168,11 @@ app.get("/api/catalog", (req, res) =>
     products: all(
       "SELECT * FROM products WHERE status!='draft' AND deleted_at IS NULL ORDER BY rowid",
     ).map(productView),
+    brand: Object.fromEntries(['header','footer'].map(placement=>{
+      const filename=`maygrey-${placement}.png`;
+      const present=existsSync(resolve(production?'dist/media':'public/media',filename));
+      return [placement,present?`/media/${filename}`:null];
+    })),
     collections: all("SELECT * FROM collections"),
     media: { campaign: setting("campaign"), lookbook: setting("lookbook") },
     shipping: setting("shipping"),

@@ -28,6 +28,7 @@ import {
 import { money, productImage } from "./data";
 import { Provider, useStore } from "./store";
 import Price from "./Price";
+import BrandLogo from "./BrandLogo";
 import { api } from "./api";
 import {
   CouponEntry,
@@ -63,9 +64,7 @@ function Header() {
         <span className="announcement-right">DROP 001 / NOW LIVE ↗</span>
       </div>
       <header>
-        <Link className="wordmark" to="/">
-          MAYGREY<span>®</span>
-        </Link>
+        <BrandLogo placement="header" />
         <nav
           className={menu ? "navigation mobile-open" : "navigation"}
           aria-label="Main navigation"
@@ -1040,9 +1039,7 @@ function Footer() {
           </div>
         </div>
       </div>
-      <Link to="/" className="footer-logo">
-        MAYGREY<span>®</span>
-      </Link>
+      <BrandLogo placement="footer" />
       <div className="footer-bottom">
         <span>© {new Date().getFullYear()} MAYGREY</span>
         <span>SOMEWHERE BETWEEN.</span>
